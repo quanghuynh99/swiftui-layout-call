@@ -46,9 +46,9 @@ struct ContentView: View {
                 }
             }
         }
-        .fullScreenCover(isPresented: $isPresentCall) {
-            CallView(isPresented: $isPresentCall, callType: $callType)
-        }
+//        .fullScreenCover(isPresented: $isPresentCall) {
+//            CallView(isPresented: $isPresentCall, callType: $callType)
+//        }
     }
 }
 
