@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DBA9CB5B2D06991E00BC86F6 /* CallLayoutSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9CB5A2D06991E00BC86F6 /* CallLayoutSwiftUI.swift */; };
+		DBA9CB5B2D06991E00BC86F6 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9CB5A2D06991E00BC86F6 /* AppView.swift */; };
 		DBA9CB5D2D06991E00BC86F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9CB5C2D06991E00BC86F6 /* ContentView.swift */; };
 		DBA9CB5F2D06992000BC86F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBA9CB5E2D06992000BC86F6 /* Assets.xcassets */; };
 		DBA9CB622D06992000BC86F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBA9CB612D06992000BC86F6 /* Preview Assets.xcassets */; };
@@ -37,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		DBA9CB572D06991E00BC86F6 /* call-layuout-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "call-layuout-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBA9CB5A2D06991E00BC86F6 /* CallLayoutSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallLayoutSwiftUI.swift; sourceTree = "<group>"; };
+		DBA9CB5A2D06991E00BC86F6 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		DBA9CB5C2D06991E00BC86F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DBA9CB5E2D06992000BC86F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBA9CB612D06992000BC86F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -98,9 +98,9 @@
 		DBA9CB592D06991E00BC86F6 /* call-layuout-swiftui */ = {
 			isa = PBXGroup;
 			children = (
-				DBA9CB862D06D3E900BC86F6 /* Call */,
-				DBA9CB5A2D06991E00BC86F6 /* CallLayoutSwiftUI.swift */,
+				DBA9CB5A2D06991E00BC86F6 /* AppView.swift */,
 				DBA9CB5C2D06991E00BC86F6 /* ContentView.swift */,
+				DBA9CB862D06D3E900BC86F6 /* Call */,
 				DBA9CB5E2D06992000BC86F6 /* Assets.xcassets */,
 				DBA9CB602D06992000BC86F6 /* Preview Content */,
 			);
@@ -274,7 +274,7 @@
 				DBA9CB852D06A76700BC86F6 /* CallView.swift in Sources */,
 				DBA9CB5D2D06991E00BC86F6 /* ContentView.swift in Sources */,
 				DBA9CB882D06D3F700BC86F6 /* CallViewModel.swift in Sources */,
-				DBA9CB5B2D06991E00BC86F6 /* CallLayoutSwiftUI.swift in Sources */,
+				DBA9CB5B2D06991E00BC86F6 /* AppView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
