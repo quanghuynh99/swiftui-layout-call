@@ -16,6 +16,7 @@
 		DBA9CB782D06992000BC86F6 /* call_layuout_swiftuiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9CB772D06992000BC86F6 /* call_layuout_swiftuiUITestsLaunchTests.swift */; };
 		DBA9CB852D06A76700BC86F6 /* CallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9CB842D06A76700BC86F6 /* CallView.swift */; };
 		DBA9CB882D06D3F700BC86F6 /* CallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9CB872D06D3F700BC86F6 /* CallViewModel.swift */; };
+		DBC036222D1001DB0037FCC9 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC036212D1001DB0037FCC9 /* AvatarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		DBA9CB772D06992000BC86F6 /* call_layuout_swiftuiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = call_layuout_swiftuiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DBA9CB842D06A76700BC86F6 /* CallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
 		DBA9CB872D06D3F700BC86F6 /* CallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallViewModel.swift; sourceTree = "<group>"; };
+		DBC036212D1001DB0037FCC9 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				DBA9CB842D06A76700BC86F6 /* CallView.swift */,
 				DBA9CB872D06D3F700BC86F6 /* CallViewModel.swift */,
+				DBC036212D1001DB0037FCC9 /* AvatarView.swift */,
 			);
 			path = Call;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				DBA9CB852D06A76700BC86F6 /* CallView.swift in Sources */,
 				DBA9CB5D2D06991E00BC86F6 /* ContentView.swift in Sources */,
 				DBA9CB882D06D3F700BC86F6 /* CallViewModel.swift in Sources */,
+				DBC036222D1001DB0037FCC9 /* AvatarView.swift in Sources */,
 				DBA9CB5B2D06991E00BC86F6 /* AppView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

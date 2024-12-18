@@ -7,6 +7,9 @@ struct CallView: View {
     @StateObject private var viewModel: CallViewModel
     @Binding var callType: CallType
 
+    @State private var translation = CGSize.zero
+    @State private var lastTranslation = CGSize.zero
+
     init(isPresented: Binding<Bool>, callType: Binding<CallType>) {
         self._isPresented = isPresented
         self._viewModel = StateObject(wrappedValue: CallViewModel(callType: callType))
@@ -15,15 +18,14 @@ struct CallView: View {
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
+            AvatarView(user: viewModel.callee, callState: "Calling...", size: .full)
+
             VStack {
-                // Title
-                Text(callType == .voiceCall ? "Voice Call" : "Video Call")
-                    .font(.largeTitle)
-                    .bold()
                 // Timer
                 Text("Time: \(viewModel.formatTime())")
                     .font(.title3)
                     .foregroundColor(.gray)
+                    .padding(.top, 50)
                 Spacer()
 
                 // Bottom bar buttons
@@ -101,6 +103,7 @@ struct CallView: View {
                     .frame(maxWidth: 70)
                     Spacer()
                 }
+                .padding(.bottom, 50)
             }
             .background(
                 callType == .voiceCall ? Color.green.opacity(0.2) : Color.blue.opacity(0.2)
@@ -113,21 +116,30 @@ struct CallView: View {
 
             // Video Node
             if callType == .videoCall {
-                VideoPlayerView()
+                AvatarView(user: viewModel.caller, callState: "Calling", size: .window)
                     .frame(width: 100, height: 150)
-                    .background(Color.blue)
                     .cornerRadius(10)
-                    .padding(.trailing, 30)
-                    .padding(.top, 70)
+                    .offset(
+                        x: lastTranslation.width + translation.width,
+                        y: lastTranslation.height + translation.height
+                    )
+                    .padding(.trailing, 50)
+                    .padding(.top, 100)
+                    .gesture(dragGesture)
             }
         }
+        .navigationTitle("ZiiChat")
     }
-}
 
-struct VideoPlayerView: View {
-    var body: some View {
-        VStack {
-            //
-        }
+    var dragGesture: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                translation = value.translation
+            }
+            .onEnded { value in
+                lastTranslation.width += value.translation.width
+                lastTranslation.height += value.translation.height
+                translation = .zero
+            }
     }
 }
