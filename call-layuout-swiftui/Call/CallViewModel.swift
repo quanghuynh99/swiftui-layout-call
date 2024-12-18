@@ -84,12 +84,9 @@ class CallViewModel: ObservableObject {
         let hours = elapsedTime / 3600
         let minutes = (elapsedTime % 3600) / 60
         let seconds = elapsedTime % 60
-
         if hours > 0 {
-            // Hiển thị cả hours khi >= 1 giờ
             return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
         } else {
-            // Chỉ hiển thị minutes và seconds
             return String(format: "%02d:%02d", minutes, seconds)
         }
     }
