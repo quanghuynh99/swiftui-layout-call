@@ -24,10 +24,10 @@ struct AvatarView: View {
 
     // Mock data
     private let player: AVPlayer = {
-        guard let url = URL(string: "https://videos.pexels.com/video-files/5532767/5532767-uhd_1440_2732_25fps.mp4") else { fatalError("Invalid video URL") }
+        guard let url = URL(string: "https://www.w3schools.com/html/mov_bbb.mp4") else { fatalError("Invalid video URL") }
         let player = AVPlayer(url: url)
-        player.isMuted = true
         player.play()
+        player.isMuted = true
         return player
     }()
 
@@ -69,13 +69,8 @@ struct AvatarView: View {
                             .font(Font.system(size: 14))
                     }
                 }
-                .frame(width: size.rawValue.width, height: size.rawValue.height)
-                .background(Color.clear)
-                .padding()
             }
         }
-        .frame(width: size.rawValue.width, height: size.rawValue.height)
-        .background(Color.black)
     }
 }
 

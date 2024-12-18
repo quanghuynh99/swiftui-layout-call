@@ -124,11 +124,12 @@ struct CallView: View {
                         x: lastTranslation.width + translation.width,
                         y: lastTranslation.height + translation.height
                     )
-                    .padding(.trailing, 50)
+                    .padding(.trailing, 30)
                     .padding(.top, 100)
                     .gesture(dragGesture)
             }
         }
+        .ignoresSafeArea()
     }
 
     var dragGesture: some Gesture {
