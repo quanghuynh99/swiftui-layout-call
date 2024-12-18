@@ -7,6 +7,7 @@ struct CallView: View {
     @StateObject private var viewModel: CallViewModel
     @Binding var callType: CallType
 
+    // Position for drag&drop
     @State private var translation = CGSize.zero
     @State private var lastTranslation = CGSize.zero
 
@@ -18,7 +19,10 @@ struct CallView: View {
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            AvatarView(user: viewModel.callee, callState: "Calling...", size: .full)
+            // Callee video
+            AvatarView(
+                user: viewModel.callee, callState: "Calling...", size: .full, hasVideoActive: $viewModel.hasVideoActive
+            )
 
             VStack {
                 // Timer
@@ -105,30 +109,27 @@ struct CallView: View {
                 }
                 .padding(.bottom, 50)
             }
-            .background(
-                callType == .voiceCall ? Color.green.opacity(0.2) : Color.blue.opacity(0.2)
-            )
             .onAppear {
                 viewModel.setupCallType(with: callType)
                 viewModel.startTimer()
             }
             .onDisappear { viewModel.stopTimer() }
 
-            // Video Node
-            if callType == .videoCall {
-                AvatarView(user: viewModel.caller, callState: "Calling", size: .window)
+            // Caller video
+            if viewModel.hasVideoActive {
+                AvatarView(user: viewModel.caller, callState: "Calling", size: .window, hasVideoActive: $viewModel.hasVideoActive)
                     .frame(width: 100, height: 150)
                     .cornerRadius(10)
                     .offset(
                         x: lastTranslation.width + translation.width,
                         y: lastTranslation.height + translation.height
                     )
-                    .padding(.trailing, 50)
+                    .padding(.trailing, 30)
                     .padding(.top, 100)
                     .gesture(dragGesture)
             }
         }
-        .navigationTitle("ZiiChat")
+        .ignoresSafeArea()
     }
 
     var dragGesture: some Gesture {
