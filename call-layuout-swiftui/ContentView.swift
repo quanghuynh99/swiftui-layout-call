@@ -5,49 +5,51 @@ struct ContentView: View {
     @State var callType: CallType = .voiceCall
 
     var body: some View {
-        VStack {
-            Text("Call layout using SwiftUI")
-            HStack {
-                Button(action: {
-                    callType = .voiceCall
-                    isPresentCall = true
-                }) {
-                    VStack {
-                        Image(systemName: "phone.fill")
-                            .font(.system(size: 50))
-                            .foregroundColor(.green)
-                        Text("Voice Call")
-                            .font(.headline)
-                            .foregroundColor(.green)
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 3)
-                }
-                .padding()
+        NavigationView {
+            VStack {
+                Text("Call layout using SwiftUI")
+                HStack {
+                    NavigationLink(destination: CallView(callType: $callType), label: {
+                        VStack {
+                            Image(systemName: "phone.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.green)
+                            Text("Voice Call")
+                                .font(.headline)
+                                .foregroundColor(.green)
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 3)
+                    })
+                    .simultaneousGesture(TapGesture().onEnded {
+                        callType = .voiceCall
+                    })
 
-                Button(action: {
-                    callType = .videoCall
-                    isPresentCall = true
-                }) {
-                    VStack {
-                        Image(systemName: "video.fill")
-                            .font(.system(size: 50))
-                            .foregroundColor(.blue)
-                        Text("Video Call")
-                            .font(.headline)
-                            .foregroundColor(.blue)
+                    NavigationLink(destination: CallView(callType: $callType)) {
+                        VStack {
+                            Image(systemName: "video.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.blue)
+                            Text("Video Call")
+                                .font(.headline)
+                                .foregroundColor(.blue)
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 3)
                     }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 3)
+                    .simultaneousGesture(TapGesture().onEnded {
+                        callType = .videoCall
+                    })
                 }
             }
-        }
-        .fullScreenCover(isPresented: $isPresentCall) {
-            CallView(isPresented: $isPresentCall, callType: $callType)
         }
     }
 }

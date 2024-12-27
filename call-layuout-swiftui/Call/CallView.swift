@@ -3,7 +3,7 @@ import AVKit
 import SwiftUI
 
 struct CallView: View {
-    @Binding var isPresented: Bool
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: CallViewModel
     @Binding var callType: CallType
 
@@ -11,8 +11,7 @@ struct CallView: View {
     @State private var translation = CGSize.zero
     @State private var lastTranslation = CGSize.zero
 
-    init(isPresented: Binding<Bool>, callType: Binding<CallType>) {
-        self._isPresented = isPresented
+    init(callType: Binding<CallType>) {
         self._viewModel = StateObject(wrappedValue: CallViewModel(callType: callType))
         self._callType = callType
     }
@@ -21,8 +20,8 @@ struct CallView: View {
         ZStack(alignment: .topTrailing) {
             // Callee video
             AvatarView(
-                user: viewModel.callee, callState: "Calling...", size: .full, hasVideoActive: $viewModel.hasVideoActive
-            )
+                user: viewModel.callee, callState: "Calling...", size: .full, hasVideoActive: $viewModel.hasRemoteVideoActive
+            ).ignoresSafeArea()
 
             VStack {
                 // Timer
@@ -91,7 +90,7 @@ struct CallView: View {
                     Spacer()
                     Button(action: {
                         // End call
-                        isPresented = false
+                        dismiss()
                     }) {
                         VStack {
                             Image(systemName: "phone.down.fill")
@@ -117,19 +116,22 @@ struct CallView: View {
 
             // Caller video
             if viewModel.hasVideoActive {
-                AvatarView(user: viewModel.caller, callState: "Calling", size: .window, hasVideoActive: $viewModel.hasVideoActive)
-                    .frame(width: 100, height: 150)
-                    .cornerRadius(10)
-                    .offset(
-                        x: lastTranslation.width + translation.width,
-                        y: lastTranslation.height + translation.height
-                    )
-                    .padding(.trailing, 30)
-                    .padding(.top, 100)
-                    .gesture(dragGesture)
+                ZStack {
+                    AvatarView(user: viewModel.caller, callState: "Calling", size: .window, hasVideoActive: $viewModel.hasVideoActive)
+                        .frame(width: 100, height: 150)
+                        .cornerRadius(10)
+                        .offset(
+                            x: lastTranslation.width + translation.width,
+                            y: lastTranslation.height + translation.height
+                        )
+                        .gesture(dragGesture)
+                }
+                .padding(.trailing, 30)
+                .padding(.top, 100)
             }
         }
-        .ignoresSafeArea()
+        .navigationTitle(callType == .videoCall ? "Video Call" : "Voice Call")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     var dragGesture: some Gesture {

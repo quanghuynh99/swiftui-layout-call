@@ -24,6 +24,7 @@ class CallViewModel: ObservableObject {
     @Published var hasMicrophoneActive: Bool = true
     @Binding var callType: CallType
 
+    @Published var hasRemoteVideoActive: Bool = false
     /*
      Mock data
      */
@@ -52,6 +53,8 @@ class CallViewModel: ObservableObject {
         hasSpeakerActive = callType == .videoCall
         hasVideoActive = callType == .videoCall
         hasMicrophoneActive = true
+
+        hasRemoteVideoActive = false
     }
 
     func startTimer() {
